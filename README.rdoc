@@ -1,3 +1,19 @@
 = Schemagery
+Add following line to your `Gemfile`:
+
+
+    gem 'schemagery', :groups => [:test, :development]
+
+
+Next, add following line in your `routes.rb` file:
+
+	mount Schemagery::Engine => "/schemagery"
+
+This will generate a view at '/schemagery' so you can view your schema!
+
+Errors may be thrown if you have some lingering uninitialized constants in your app.
+
+This is very much in development, but with much anticipated future improvement!
+
 
 This project rocks and uses MIT-LICENSE.
