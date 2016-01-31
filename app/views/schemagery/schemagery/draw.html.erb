@@ -1,3 +1,97 @@
-<div class="hellp">
-  YO YOU MADE IT
-</div>
+<!DOCTYPE html>
+<html>
+<script src="https://npmcdn.com/draggabilly@2.1/dist/draggabilly.pkgd.js"></script>
+<head>
+    <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <style>
+    table {
+        width:10%;
+    }
+    table, th, td {
+        border: none solid black;
+        border-collapse: collapse;
+    }
+    th, td {
+        padding: 5px;
+        text-align: left;
+    }
+    table.t01 tr:nth-child(even) {
+        background-color: #eee;
+    }
+    table.t01 tr:nth-child(odd) {
+       background-color:#fff;
+    }
+    table.t01 th  {
+        background-color: midnightblue;
+        color: white;
+    }
+    body { font-family: sans-serif; }
+    .draggable {
+    width: 10px;
+    height: 10px;
+    background: #F90;
+    border-radius: 10px;
+    margin: 0 10px 10px 0;
+    float: left;
+
+    }
+
+    table{
+    border: none !important;
+    }
+    .draggable.is-pointer-down {
+    background: #09F;
+    z-index: 2; /* above other draggies */
+    }
+    .draggable.is-dragging { opacity: 0.7; }
+  </style>
+</head>
+<body>
+  <h1>Schema for <%= Rails.root.basename.to_s.capitalize %>!</h1>
+  <div id="schema">
+
+  <div class="container">
+    <% @schema_array.each do |table| %>
+      <table class="draggable">
+          <th><%=table[:table_name]%></th>
+          <% table[:db_field_names].each do |fn| %>
+            <tr>
+              <td><%= fn %></td>
+            </tr>
+          <%end%>
+      </table>
+    <%end%>
+  </div>
+
+  <script>
+    // get all draggie elements
+    var draggableElems = document.querySelectorAll('.draggable');
+    // array of Draggabillies
+    var draggies = []
+    // init Draggabillies
+    for ( var i=0, len = draggableElems.length; i < len; i++ ) {
+      var draggableElem = draggableElems[i];
+      var draggie = new Draggabilly( draggableElem, {
+        containment: false
+      });
+      draggies.push( draggie );
+    }
+
+    //d3 below
+
+    var windowHeight = $(window).height();
+    var windowWidth = $(window).width();
+    var nodes = d3.select(".draggable")
+    // getBoundingClientRect();
+
+    var force = d3.layout.force()
+        .size([width, height])
+        .nodes()
+        .links(links);
+
+
+  </script>
+</body>
+
+</html>
