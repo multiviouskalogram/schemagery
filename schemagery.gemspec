@@ -8,9 +8,9 @@ Gem::Specification.new do |s|
   s.name        = "schemagery"
   s.version     = Schemagery::VERSION
   s.authors     = ["Jim Joyce", "Michael Karouzos"]
-  s.email       = ["figureout@gmail.com"]
-  s.homepage    = "https://whitehouse.gov"
-  s.summary     = "Summary of Schemagery."
+  s.email       = ["schemagery@gmail.com"]
+  s.homepage    = "builtbycoder.com"
+  s.summary     = "Visualization and optimization tool for relational database schemas"
   s.description = "Description of Schemagery."
   s.license     = "MIT"
 
