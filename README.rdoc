@@ -7,7 +7,7 @@ Add following line to your `Gemfile`:
 
 Next, add following line in your `routes.rb` file:
 
-	mount Schemagery::Engine => "/schemagery"
+    mount Schemagery::Engine => "/schemagery"
 
 This will generate a view at '/schemagery' so you can view your schema!
 
